@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add book</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h2>Edit Disc</h2>
+		<div class="col-md-4">
+			<form th:object="${disc}" th:action="@{../save}" action="#"
+				method="post">
+				<input type="hidden" th:field="*{modelId}" class="form-control" />
+				<div>
+					<label for="model"></label><input type="text"
+						th:field="*{model}" />
+				</div>
+				<div>
+					<label for="speed"></label><input type="text"
+						th:field="*{speed}" />
+				</div>
+				<div>
+					<label for="glide"></label><input type="text" 
+					th:field="*{glide}" />
+				</div>
+				<div>
+					<label for="turn"></label><input type="text" 
+					th:field="*{turn}" />
+				</div>
+				<div>
+					<label for="fade"></label><input type="text"
+						th:field="*{fade}" />
+				</div>
+				
+				<div>
+						<select id="manucafturerlist" th:field="*{manufacturer}" class="form-control">
+							<option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.manufacturerId}" th:text="${manufacturer.name}"></option>
+						</select>
+				</div>
+
+				<input type="submit" class="btn btn-success" value="Save"></input>
+				<a href="/disclist" class="btn btn-primary">Cancel</a>
+			</form>
+
+		</div>
+	</div>
+
+</body>
+</html>

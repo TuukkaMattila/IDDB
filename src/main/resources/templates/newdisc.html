@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New disc</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+</head>
+<body>
+	<div class="container">
+		<h2>Add Disc</h2>
+			<div class="col-md-4">
+				<form th:object="${disc}" th:action="@{save}" action="#" method="post">
+				
+					<label for="model">Model</label>
+						<input type="text" id="model" th:field="*{model}" class="form-control" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+						
+					<label for="speed">Speed</label>
+						<input type="text" id="speed" th:field="*{speed}" class="form-control" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+						
+					<label for="glide">Glide</label>
+						<input type="text" id="glide" th:field="*{glide}" class="form-control" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+						
+					<label for="turn">Turn</label>
+						<input type="text" id="turn" th:field="*{turn}" class="form-control" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+						
+					<label for="fade">Fade</label>
+						<input type="text" id="fade" th:field="*{fade}" class="form-control" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+							
+					<label for="manufacturerlist">Manufacturer</label>
+						<select id="manufacturerlist" th:field="*{manufacturer}" class="form-control">
+							<option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.manufacturerId}" th:text="${manufacturer.name}"></option>
+						</select>
+						
+						<input type="submit" class="btn btn-primary" value="Save"></input>
+						<a href="/disclist" class="btn btn-primary">Cancel</a>
+				</form>	
+			</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manufacturers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+		
+</head>
+<body>
+<div class="container">
+	<div class="col-md-4">
+	<h2>Manufacturers</h2>
+	
+	
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th>Manufacturer name</th>
+				
+			</tr>
+	
+			<tr th:each = "manufacturer : ${manufacturers}">
+				
+				<td th:text="${manufacturer.name}"></td>
+
+			</tr>	
+		</tbody>
+	</table>
+		<a href="/newmanufacturer" class="btn btn-primary">Add Manufacturer</a>
+		<a href="/index" class="btn btn-primary">Back to menu</a>
+		</div>
+</body>
+</html>

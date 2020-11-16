@@ -23,6 +23,7 @@
 				<th>Fade</th>
 				<th>Manufacturer</th>
 				<th sec:authorize="hasAuthority('ADMIN')"></th>
+				<th sec:authorize="hasAuthority('ADMIN')"></th>
 				
 				
 			</tr>
@@ -37,6 +38,7 @@
 				<td th:text="${disc.manufacturer.name}"></td>
 				
 				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{modelId}(modelId=${disc.modelId})}" class="btn btn-primary">Edit</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{modelId}(modelId=${disc.modelId})}" class="btn btn-xs btn-danger">Delete</a></td>
 				
 				
 				<!-- <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-xs btn-danger">Delete</a></td>

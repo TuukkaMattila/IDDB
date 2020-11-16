@@ -17,7 +17,7 @@ function Disclist() {
 
     const getDiscs = () => {
 
-        fetch('https://iddb.herokuapp.com/discs')
+        fetch('https://iddb.herokuapp.com/api/discs')
         .then ((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -32,10 +32,12 @@ function Disclist() {
         { headerName: 'Glide', field: 'glide', sortable: true, filter: true },
         { headerName: 'Turn', field: 'turn', sortable: true, filter: true },
         { headerName: 'Fade', field: 'fade', sortable: true, filter: true },
-        { headerName: 'Manufacturer', field: 'manufacturer', sortable: true, filter: true },
+        { headerName: 'Manufacturer', field: 'manufacturer.name', sortable: true, filter: true },
     
 
     ]
+
+    
 
     return(
         <div>
@@ -52,6 +54,7 @@ function Disclist() {
             paginationPageSize="10"
             >
             </AgGridReact>
+            <Button variant="contained" color="primary" href="https://iddb.herokuapp.com/index">Log in as admin</Button>
             
  
             </div>

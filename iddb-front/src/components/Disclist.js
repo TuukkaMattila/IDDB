@@ -17,7 +17,7 @@ function Disclist() {
 
     const getDiscs = () => {
 
-        fetch('https://iddb.herokuapp.com/api/discs')
+        fetch('https://iddb.herokuapp.com/discs')
         .then ((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -54,7 +54,7 @@ function Disclist() {
             paginationPageSize="10"
             >
             </AgGridReact>
-            <Button variant="contained" color="primary" href="https://iddb.herokuapp.com/index">Log in as admin</Button>
+            <Button variant="contained" color="primary" href="https://iddb.herokuapp.com/login">Log in as admin</Button>
             
  
             </div>

@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.authorizeRequests().antMatchers("/index","/disclist" , "/css/**").permitAll() //Does not need login
+			.authorizeRequests().antMatchers("/index","/disclist", "/discs", "/css/**").permitAll() //Does not need login
 			.and()
 			.authorizeRequests().anyRequest().authenticated() //kaikki muut endpointit vaativat sisäänkirjautumisen
 			.and()

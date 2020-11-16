@@ -56,6 +56,12 @@ public class DiscController {
 		return "disclist";
 	}
 	
+	// REST method that returns all discs as a react
+	@RequestMapping(value="/api/discs", method = RequestMethod.GET)
+	public @ResponseBody List<Disc> discListRestFront(){
+		return (List<Disc>) discRepository.findAll();
+	}
+	
 	// REST method that returns all discs as a list (JSON)
 	@RequestMapping(value="discs", method = RequestMethod.GET)
 	public @ResponseBody List<Disc> discListRest(){

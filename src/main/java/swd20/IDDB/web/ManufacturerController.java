@@ -3,9 +3,12 @@ package swd20.IDDB.web;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import swd20.IDDB.domain.Disc;
 import swd20.IDDB.domain.Manufacturer;
 import swd20.IDDB.domain.ManufacturerRepository;
 
@@ -59,8 +63,15 @@ public class ManufacturerController {
 	
 	//Saving a manufacturer
 	@RequestMapping(value="/savemanufacturer")
-	public String save(Manufacturer manufacturer) {
-		manufacturerRepository.save(manufacturer);
+	public String save(@Valid Manufacturer manufacturer, BindingResult bindingResult, Model model) {
+		//If form has errors redirects back to form
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("manufacturers", manufacturerRepository.findAll());
+			return "newmanufacturer";
+		}
+		else {
+			manufacturerRepository.save(manufacturer);
+		}
 		return "redirect:manufacturerlist";
 	}
 }

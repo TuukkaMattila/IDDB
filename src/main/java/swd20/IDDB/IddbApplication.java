@@ -62,6 +62,8 @@ public class IddbApplication {
 			Disc disc13 = new Disc("Comet", 4, 5, -2, 1, manufacturer1);
 			Disc disc14 = new Disc("M5", 5, 5, -3, 1, manufacturer6);
 			Disc disc15 = new Disc("Northman", 10, 5, -1, 2, manufacturer1);
+			
+			
 			discRepository.save(disc1);
 			discRepository.save(disc2);
 			discRepository.save(disc3);

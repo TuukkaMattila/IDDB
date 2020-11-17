@@ -8,6 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,18 +27,21 @@ public class Disc {
 	
 	
 
+	@NotNull
+	@Size(min = 2, max = 15)
 	private String model;
 	
-	
+	@NotNull
+	@Max(value = 14)
 	private int speed;
 	
-	
+	@NotNull
 	private int glide;
 	
-	
+	@NotNull
 	private int turn;
 	
-	
+	@NotNull
 	private int fade;
 	
 	@ManyToOne

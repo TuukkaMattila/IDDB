@@ -14,10 +14,16 @@
 					<label for="model">Model</label>
 						<input type="text" id="model" th:field="*{model}" class="form-control" />
 							<div style="clear: both; display: block; height: 10px;"></div>
+							<div th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="col-sm-10">
+                    			<p>Error</p>
+                			</div>
 						
 					<label for="speed">Speed</label>
 						<input type="text" id="speed" th:field="*{speed}" class="form-control" />
 							<div style="clear: both; display: block; height: 10px;"></div>
+							<div th:if="${#fields.hasErrors('speed')}" th:errors="*{speed}" class="col-sm-10">
+                    <p>Error</p>
+                </div>
 						
 					<label for="glide">Glide</label>
 						<input type="text" id="glide" th:field="*{glide}" class="form-control" />

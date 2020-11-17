@@ -3,12 +3,13 @@ package swd20.IDDB.web;
 import java.util.List;
 import java.util.Optional;
 
-
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -93,8 +94,16 @@ public class DiscController {
 	
 	//Saving a disc
 	@RequestMapping(value="/save")
-	public String save(Disc disc) {
-		discRepository.save(disc);
+	public String save(@Valid Disc disc, BindingResult bindingResult, Model model) {
+		//If form has errors redirects back to form
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("disc", new Disc());
+			model.addAttribute("manufacturers", manufacturerRepository.findAll());
+			return "newdisc";
+		}
+		else {
+			discRepository.save(disc);
+		}
 		return "redirect:disclist";
 	}
 	

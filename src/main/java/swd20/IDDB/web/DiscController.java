@@ -92,6 +92,14 @@ public class DiscController {
 		return "newdisc";
 	}
 	
+	//Editing a disc
+	@RequestMapping(value="/edit/{modelId}")
+	public String editDisc(@PathVariable("modelId") Long modelId, Model model) {
+		model.addAttribute("disc", discRepository.findById(modelId));
+		model.addAttribute("manufacturers", manufacturerRepository.findAll());
+		return "editdisc";
+	}
+	
 	//Saving a disc
 	@RequestMapping(value="/save")
 	public String save(@Valid Disc disc, BindingResult bindingResult, Model model) {
@@ -107,11 +115,4 @@ public class DiscController {
 		return "redirect:disclist";
 	}
 	
-	//Editing a disc
-	@RequestMapping(value="/edit/{modelId}")
-	public String editDisc(@PathVariable("modelId") Long modelId, Model model) {
-		model.addAttribute("disc", discRepository.findById(modelId));
-		model.addAttribute("manufacturers", manufacturerRepository.findAll());
-		return "editdisc";
-	}
 }
